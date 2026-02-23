@@ -44,10 +44,12 @@ Expected env keys:
   - include read explicitly: `cd {baseDir} && uv run python scripts/list_messages.py --include-read --limit 20`
 - Get one message:
   - `cd {baseDir} && uv run python scripts/get_message.py <message_id>`
-- Download attachments:
+- Download attachments (sanitized filenames, HTTPS only, size limit configurable):
   - `cd {baseDir} && uv run python scripts/download_attachments.py <message_id> --out-dir ./downloads`
-- Analyze downloaded attachment:
+- Analyze downloaded attachment metadata (safe default):
   - `cd {baseDir} && uv run python scripts/analyze_attachment.py ./downloads/file.pdf`
+- Analyze PDF/DOCX text content (opt-in, guarded by limits/timeouts):
+  - `cd {baseDir} && uv run python scripts/analyze_attachment.py ./downloads/file.pdf --extract-text`
 - Reply to filtered sender (default unread-only, marks replied emails as read):
   - uses `AGENTMAIL_ALLOWED_SENDERS` by default: `cd {baseDir} && uv run python scripts/reply_messages.py --text "Received. Working on it." --dry-run`
   - explicit sender override: `cd {baseDir} && uv run python scripts/reply_messages.py --from-email sender@example.com --text "Received." --dry-run`
@@ -64,6 +66,8 @@ Expected env keys:
 - Keep sender allowlists explicit (`AGENTMAIL_ALLOWED_SENDERS` or `--from-email`) before sending replies.
 - Prefer dedicated labels for idempotency (`--dedupe-label`).
 - Use JSON output from scripts for downstream automation.
+- Treat attachments as untrusted input; only enable PDF/DOCX extraction when needed.
+- Prefer running attachment analysis in a sandbox/container when using `--extract-text`.
 </guardrails>
 
 <api_notes>

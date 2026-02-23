@@ -76,11 +76,14 @@ uv run python scripts/list_messages.py --include-read --limit 20
 # Get one full message
 uv run python scripts/get_message.py <message_id>
 
-# Download attachments from a message
+# Download attachments from a message (HTTPS only, filename/path sanitized)
 uv run python scripts/download_attachments.py <message_id> --out-dir ./downloads
 
-# Analyze local attachment (txt/md/csv/json/log/pdf/docx)
+# Analyze local attachment metadata (safe default; PDF/DOCX text extraction disabled)
 uv run python scripts/analyze_attachment.py ./downloads/file.docx
+
+# Opt in to PDF/DOCX text extraction with limits/timeouts
+uv run python scripts/analyze_attachment.py ./downloads/file.docx --extract-text --max-bytes 10485760 --parse-timeout-seconds 8
 
 # Reply to allowlisted sender(s) from .env (dry run first)
 uv run python scripts/reply_messages.py --text "Received." --dry-run
@@ -108,6 +111,16 @@ tail -f inbox_ops.log
 - `reply_messages.py` defaults to **unread-only** and `--limit 10`.
 - `reply_messages.py` marks replied emails as read by default.
 - Use `--dry-run` for preview before sending replies.
+- `download_attachments.py` sanitizes attachment filenames, enforces output-dir containment, and downloads over HTTPS only.
+- `analyze_attachment.py` treats attachments as untrusted input and skips PDF/DOCX parsing unless `--extract-text` is provided.
+- `analyze_attachment.py` enforces file size, extraction length, and parser timeout limits.
+
+## Attachment security notes
+
+- Treat all attachments as untrusted input.
+- Prefer analyzing attachments in a sandboxed/containerized environment when enabling `--extract-text`.
+- PDF/DOCX parsing uses external libraries and runs in a subprocess with timeout/resource limits, but sandboxing is still recommended.
+- Analyzer output includes `sha256`, `parse_skipped_reason`, and `parse_error` fields to support safer automation decisions.
 
 ## Quick smoke test (no outgoing email)
 
@@ -125,6 +138,7 @@ uv run python scripts/reply_messages.py --text "test" --dry-run --limit 3
   - try `--include-read` to validate access.
 - Dependency/import errors:
   - run `uv sync` again.
+  - run `uv run python -m unittest discover -s tests -v` to verify local hardening checks.
 
 ## Public repo safety
 
