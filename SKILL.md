@@ -1,6 +1,6 @@
 ---
 name: agentmail-inbox-ops
-description: "Manage AgentMail inbox operations with deterministic Python scripts: list/read messages, download and analyze attachments, reply with sender filters, and set read/unread state. Use when handling inbox workflows for any AgentMail inbox."
+description: "Manage Agentmail.to inbox operations with deterministic Python scripts: list/read messages, download and analyze attachments, reply with sender filters, and set read/unread state. Use when handling inbox workflows for any Agentmail.to inbox."
 ---
 
 <objective>
@@ -9,7 +9,7 @@ Use this skill for reliable inbox operations through scripts in `{baseDir}/scrip
 
 <when_to_use>
 🛑 ALWAYS use this skill when:
-- Needs to take an email action in AgentMail (list/read/reply/download attachments/set read state).
+- Needs to take an email action in Agentmail.to (list/read/reply/download attachments/set read state).
 - Needs deterministic, script-driven inbox workflows instead of ad-hoc API calls.
 - Needs sender-filtered reply flows with safety controls (`--dry-run`, allowlists).
 

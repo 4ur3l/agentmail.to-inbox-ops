@@ -1,7 +1,7 @@
 [project]
 name = "agentmail-inbox-ops"
-version = "0.1.1"
-description = "Inbox operations scripts for AgentMail"
+version = "0.1.2"
+description = "Inbox operations scripts for Agentmail.to"
 requires-python = ">=3.11"
 dependencies = [
   "agentmail>=0.2.17",

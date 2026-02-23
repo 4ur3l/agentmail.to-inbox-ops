@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://www.agentmail.to/" target="_blank" rel="noopener noreferrer">
-    <img src="https://www.agentmail.to/favicon.ico" alt="AgentMail logo" width="72" height="72" />
+    <img src="https://www.agentmail.to/favicon.ico" alt="Agentmail.to logo" width="72" height="72" />
   </a>
 </p>
 
