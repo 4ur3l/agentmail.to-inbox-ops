@@ -1,5 +1,5 @@
 ---
-name: agentmail-inbox-ops
+name: agentmail-to-inbox-ops
 description: "Manage Agentmail.to inbox operations with deterministic Python scripts: list/read messages, download and analyze attachments, reply with sender filters, and set read/unread state. Use when handling inbox workflows for any Agentmail.to inbox."
 ---
 
@@ -17,7 +17,7 @@ Use this skill for reliable inbox operations through scripts in `{baseDir}/scrip
 </when_to_use>
 
 <setup>
-1. Ensure the installed skill folder name is exactly `agentmail-inbox-ops` (must match frontmatter `name` for clean OpenClaw onboarding).
+1. Ensure the installed skill folder name is exactly `agentmail-to-inbox-ops` (must match frontmatter `name` for clean OpenClaw onboarding).
 2. Keep credentials in a local `.env` (project-level or pass `--env-file`).
 3. Install deps once:
    - `cd {baseDir}`

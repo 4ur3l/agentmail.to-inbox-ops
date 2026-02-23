@@ -1,4 +1,4 @@
-# agentmail-inbox-ops
+# agentmail-to-inbox-ops
 
 <p align="center">
   <a href="https://www.agentmail.to/" target="_blank" rel="noopener noreferrer">
@@ -15,7 +15,7 @@ This skill gives you clean, script-driven operations to read, filter, reply, pro
 
 ```bash
 # 1) Go to the skill folder
-cd skills/agentmail-inbox-ops
+cd skills/agentmail-to-inbox-ops
 
 # 2) Install dependencies
 uv sync
@@ -38,7 +38,7 @@ Expected: validator prints READY (or READY WITH WARNINGS), then list command pri
 For OpenClaw to discover and onboard this skill correctly:
 
 1. **Skill folder name must match `SKILL.md` frontmatter `name`**
-   - required name: `agentmail-inbox-ops`
+   - required name: `agentmail-to-inbox-ops`
 2. Place the folder in one of OpenClaw's skill roots:
    - `<workspace>/skills` (highest priority)
    - `~/.openclaw/skills`
@@ -47,11 +47,11 @@ For OpenClaw to discover and onboard this skill correctly:
 Example install from this repo:
 
 ```bash
-mkdir -p ~/.openclaw/skills/agentmail-inbox-ops
-rsync -a --delete ./ ~/.openclaw/skills/agentmail-inbox-ops/
+mkdir -p ~/.openclaw/skills/agentmail-to-inbox-ops
+rsync -a --delete ./ ~/.openclaw/skills/agentmail-to-inbox-ops/
 ```
 
-If your local folder is not named `agentmail-inbox-ops` (for example `agentmail-skill`), copy/sync it using the required target name above.
+If your local folder is not named `agentmail-to-inbox-ops` (for example `agentmail-skill`), copy/sync it using the required target name above.
 
 ## Environment
 
