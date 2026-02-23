@@ -1,0 +1,6 @@
+.env
+.venv/
+__pycache__/
+downloads/
+inbox_ops.log
+.DS_Store
